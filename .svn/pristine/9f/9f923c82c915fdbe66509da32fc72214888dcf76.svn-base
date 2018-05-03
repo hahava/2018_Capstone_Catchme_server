@@ -1,0 +1,13 @@
+package capstone.sejong.question;
+
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class QuestionDAO {
+
+	public String selectById(int num) {
+		System.out.println(num + "\tselectById");
+		return null;
+	}
+
+}

@@ -1,0 +1,26 @@
+package capstone.sejong.question;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public class QuestionDAO {
+
+	@Autowired
+	SqlSession session;
+
+	public String selectById(int num) {
+		System.out.println(num + "\tselectById");
+		return null;
+	}
+
+	public List<SampleDTO> sampleList() {
+		System.out.println("2");
+		return session.selectList("sampleList");
+	}
+
+}

@@ -1,0 +1,29 @@
+package capstone.sejong.question;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class QuesitonService {
+
+	@Autowired
+	QuestionDAO question;
+
+	String selectById(int num) {
+		return question.selectById(num);
+	}
+
+	public List<SampleDTO> getSampleList() {
+		System.out.println("getSapleList");
+		return question.sampleList();
+	}
+
+	public void sendRequest(QuestionDTO questionDTO) {
+		System.out.println("sendquestion()");
+		question.insert(questionDTO);
+	}
+
+}
