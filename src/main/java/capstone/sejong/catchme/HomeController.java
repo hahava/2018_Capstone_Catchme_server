@@ -1,8 +1,6 @@
 package capstone.sejong.catchme;
 
-import java.awt.List;
 import java.text.DateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 

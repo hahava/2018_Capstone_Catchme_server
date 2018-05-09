@@ -1,18 +1,19 @@
-package capstone.sejong.inquiry;
+package capstone.sejong.chemical;
+
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InquiryDAO {
+public class ChemicalDAO {
 
 	@Autowired
 	SqlSession session;
 
-	public void insert(InquiryDTO inquiryDTO) throws Exception{
-		System.out.println("insert()");
-		session.insert("insert",inquiryDTO);
+	public List<String> getList() throws Exception {
+		return session.selectList("getList");
 	}
 
 }

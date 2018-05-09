@@ -1,7 +1,5 @@
 package capstone.sejong.inquiry;
 
-import org.springframework.stereotype.Repository;
-
 public class InquiryDTO {
 
 

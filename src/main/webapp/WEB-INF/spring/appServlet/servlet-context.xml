@@ -27,7 +27,7 @@
 
 	<context:component-scan base-package="capstone.sejong.catchme" />
 	<context:component-scan base-package="capstone.sejong.inquiry" />
-	<context:component-scan base-package="capstone.sejong.grad" />
+	<context:component-scan base-package="capstone.sejong.chemical" />
 
 
 </beans:beans>

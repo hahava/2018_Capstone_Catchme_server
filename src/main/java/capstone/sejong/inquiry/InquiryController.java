@@ -31,7 +31,7 @@ public class InquiryController {
 			
 			return new ResponseEntity(null, headers, HttpStatus.BAD_REQUEST);
 		}
-		//성공시 200 코드 리턴
+		// 성공시 200 코드 리턴
 		return new ResponseEntity(null, headers, HttpStatus.OK);
 	}
 
