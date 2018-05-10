@@ -16,4 +16,10 @@ public class ChemicalDAO {
 		return session.selectList("getList");
 	}
 
+	public ChemicalDTO getInfo(String gradient) {
+		ChemicalDTO chemicalDTO = session.selectOne("getinfo", gradient);
+		System.out.println(chemicalDTO.allergy + "");
+		return chemicalDTO;
+	}
+
 }

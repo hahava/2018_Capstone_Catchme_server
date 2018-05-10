@@ -6,4 +6,13 @@
 		select nameK from cheminfo
 	</select>
 
+	<select id="getinfo" parameterType="String"
+		resultType="capstone.sejong.chemical.ChemicalDTO">
+		select
+		*
+		from
+		cheminfo
+		where nameK = #{'gradient'}
+	</select>
+
 </mapper>
