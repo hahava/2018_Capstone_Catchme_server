@@ -15,4 +15,5 @@
 		where nameK = #{'gradient'}
 	</select>
 
+
 </mapper>

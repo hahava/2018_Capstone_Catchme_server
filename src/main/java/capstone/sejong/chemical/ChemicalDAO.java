@@ -1,5 +1,6 @@
 package capstone.sejong.chemical;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -20,6 +21,16 @@ public class ChemicalDAO {
 		ChemicalDTO chemicalDTO = session.selectOne("getinfo", gradient);
 		System.out.println(chemicalDTO.allergy + "");
 		return chemicalDTO;
+	}
+
+	public List<ChemicalDTO> getInfoList(List<String> list) {
+		List<ChemicalDTO> temp = new ArrayList<>();
+		for (String gradient : list) {
+			ChemicalDTO chemicalDTO = session.selectOne("getinfo", gradient);
+			System.out.println(chemicalDTO.nameE);
+			temp.add(chemicalDTO);
+		}
+		return temp;
 	}
 
 }

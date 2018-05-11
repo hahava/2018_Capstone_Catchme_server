@@ -21,4 +21,9 @@ public class ChemicalService {
 		return chemicalDao.getInfo(gradient);
 	}
 
+	public List<ChemicalDTO> getInfoList(List<String> list) {
+		System.out.println("getInfoList()");
+		return chemicalDao.getInfoList(list);
+	}
+
 }

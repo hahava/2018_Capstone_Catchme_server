@@ -28,11 +28,11 @@ public class InquiryController {
 		} catch (Exception e) {
 			// 에러 발생시 400 error를 리턴한다.
 			e.printStackTrace();
-			
-			return new ResponseEntity(null, headers, HttpStatus.BAD_REQUEST);
+
+			return new ResponseEntity(headers, HttpStatus.BAD_REQUEST);
 		}
 		// 성공시 200 코드 리턴
-		return new ResponseEntity(null, headers, HttpStatus.OK);
+		return new ResponseEntity(headers, HttpStatus.OK);
 	}
 
 }
