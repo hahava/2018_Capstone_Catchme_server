@@ -56,7 +56,6 @@ public class ChemicalController {
 		try {
 			chemiList = chemicalService.getInfoList(list);
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 		for (int i = 0; i < chemiList.size(); i++) {
 			System.out.println(chemiList.get(i).getNameK());
