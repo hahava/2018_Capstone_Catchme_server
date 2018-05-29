@@ -13,22 +13,19 @@ public class ChemicalDAO {
 	@Autowired
 	SqlSession session;
 
-	public List<String> getList() throws Exception {
+	public List<String> getnamelist() throws Exception {
 		return session.selectList("getList");
 	}
 
-	public ChemicalDTO getInfo(String gradient) {
-		System.out.println("getInfo()2");
+	public ChemicalDTO getInfo(String gradient) throws Exception {
 		ChemicalDTO chemicalDTO = session.selectOne("getinfo", gradient);
-		System.out.println(chemicalDTO.allergy + "");
 		return chemicalDTO;
 	}
 
-	public List<ChemicalDTO> getInfoList(List<String> list) {
+	public List<ChemicalDTO> getInfoList(List<String> list) throws Exception {
 		List<ChemicalDTO> temp = new ArrayList<>();
 		for (String gradient : list) {
 			ChemicalDTO chemicalDTO = session.selectOne("getinfo", gradient);
-			System.out.println(chemicalDTO.nameE);
 			temp.add(chemicalDTO);
 		}
 		return temp;

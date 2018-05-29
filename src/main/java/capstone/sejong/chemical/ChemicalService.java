@@ -11,18 +11,15 @@ public class ChemicalService {
 	@Autowired
 	ChemicalDAO chemicalDao;
 
-	public List<String> getList() throws Exception {
-		System.out.println("getList()");
-		return chemicalDao.getList();
+	public List<String> getnamelist() throws Exception {
+		return chemicalDao.getnamelist();
 	}
 
-	public ChemicalDTO getInfo(String gradient) {
-		System.out.println("getinfo()");
+	public ChemicalDTO getInfo(String gradient) throws Exception {
 		return chemicalDao.getInfo(gradient);
 	}
 
-	public List<ChemicalDTO> getInfoList(List<String> list) {
-		System.out.println("getInfoList()");
+	public List<ChemicalDTO> getInfoList(List<String> list) throws Exception {
 		return chemicalDao.getInfoList(list);
 	}
 

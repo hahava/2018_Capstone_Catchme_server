@@ -21,16 +21,16 @@ public class ChemicalController {
 	ChemicalService chemicalService;
 
 	// 화학성분 전체 항목명을 리턴한다.
-	@RequestMapping(value = "/namelist", method = RequestMethod.GET)
+	@RequestMapping(value = "/getnamelist", method = RequestMethod.GET)
 	public ResponseEntity chemicaList() {
 		List<String> list = null;
-		ResponseEntity responseEntity;
 		try {
-			list = chemicalService.getList();
+			list = chemicalService.getnamelist();
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return new ResponseEntity(HttpStatus.BAD_REQUEST);
 		}
+		// json타입으로 만들기 위한 hashmap
 		Map<String, String> result = new HashMap<>();
 		for (int i = 0; i < list.size(); i++) {
 			result.put(String.valueOf(i), list.get(i));
@@ -41,7 +41,6 @@ public class ChemicalController {
 	// 화학성분 1개의 정보를 보내준다.
 	@RequestMapping(value = "/getinfo/{gradient}", method = RequestMethod.GET)
 	public ResponseEntity getInfo(@PathVariable String gradient) {
-		System.out.println(gradient);
 		ChemicalDTO chemicalDTO = null;
 		try {
 			chemicalDTO = chemicalService.getInfo(gradient);
@@ -59,9 +58,8 @@ public class ChemicalController {
 		try {
 			chemiList = chemicalService.getInfoList(list);
 		} catch (Exception e) {
-		}
-		for (int i = 0; i < chemiList.size(); i++) {
-			System.out.println(chemiList.get(i).getNameK());
+			System.out.println(e.getMessage());
+			return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
 		}
 		return new ResponseEntity<List<ChemicalDTO>>(chemiList, HttpStatus.OK);
 	}
