@@ -1,18 +1,17 @@
 package capstone.sejong.chemical;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
-import capstone.sejong.inquiry.InquiryDTO;
 
 @RequestMapping(value = "/chemical")
 @RestController
@@ -32,7 +31,11 @@ public class ChemicalController {
 			System.out.println(e.getMessage());
 			return new ResponseEntity(HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity(list, HttpStatus.OK);
+		Map<String, String> result = new HashMap<>();
+		for (int i = 0; i < list.size(); i++) {
+			result.put(String.valueOf(i), list.get(i));
+		}
+		return new ResponseEntity(result, HttpStatus.OK);
 	}
 
 	// 화학성분 1개의 정보를 보내준다.

@@ -12,7 +12,7 @@
 		*
 		from
 		cheminfo
-		where nameK = #{'gradient'}
+		where nameK = #{gradient}
 	</select>
 
 

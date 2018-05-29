@@ -7,7 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.mysql.fabric.Response;
 
 @RestController
 public class InquiryController {
@@ -21,6 +24,11 @@ public class InquiryController {
 	@RequestMapping(value = "/sendRequest", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity sendQuestion(@RequestBody InquiryDTO inquiryDTO) {
 
+		System.out.println(inquiryDTO.content);
+		System.out.println(inquiryDTO.email);
+		System.out.println(inquiryDTO.title);
+		System.out.println(inquiryDTO.type);
+
 		headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 		try {
@@ -28,11 +36,10 @@ public class InquiryController {
 		} catch (Exception e) {
 			// 에러 발생시 400 error를 리턴한다.
 			e.printStackTrace();
-
 			return new ResponseEntity(headers, HttpStatus.BAD_REQUEST);
 		}
 		// 성공시 200 코드 리턴
-		return new ResponseEntity(headers, HttpStatus.OK);
-	}
+		return new ResponseEntity("not fail", headers, HttpStatus.OK);
+	} // 질의응답. DTO 형태로 전달받는다.
 
 }

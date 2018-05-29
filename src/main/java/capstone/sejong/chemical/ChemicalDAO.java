@@ -18,6 +18,7 @@ public class ChemicalDAO {
 	}
 
 	public ChemicalDTO getInfo(String gradient) {
+		System.out.println("getInfo()2");
 		ChemicalDTO chemicalDTO = session.selectOne("getinfo", gradient);
 		System.out.println(chemicalDTO.allergy + "");
 		return chemicalDTO;
