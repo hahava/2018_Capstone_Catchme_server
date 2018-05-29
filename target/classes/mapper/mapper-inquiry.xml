@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.inquiry">
 
-	<!-- <select id="sampleList" resultType=""> select * from my_table </select> -->
 
 	<insert id="insert"
 		parameterType="capstone.sejong.inquiry.InquiryDTO">

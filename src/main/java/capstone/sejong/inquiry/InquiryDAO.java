@@ -10,9 +10,8 @@ public class InquiryDAO {
 	@Autowired
 	SqlSession session;
 
-	public void insert(InquiryDTO inquiryDTO) throws Exception{
-		System.out.println("insert()");
-		session.insert("insert",inquiryDTO);
+	public void insert(InquiryDTO inquiryDTO) throws Exception {
+		session.insert("insert", inquiryDTO);
 	}
 
 }

@@ -9,8 +9,7 @@ public class InquiryService {
 	@Autowired
 	InquiryDAO question;
 
-	public void sendRequest(InquiryDTO questionDTO) throws Exception{
-		System.out.println("sendquestion()");
+	public void sendRequest(InquiryDTO questionDTO) throws Exception {
 		question.insert(questionDTO);
 	}
 

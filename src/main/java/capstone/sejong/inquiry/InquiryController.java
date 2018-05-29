@@ -18,17 +18,10 @@ public class InquiryController {
 	@Autowired
 	InquiryService service;
 
-	HttpHeaders headers;
-
 	// 질의응답. DTO 형태로 전달받는다.
 	@RequestMapping(value = "/sendRequest", method = RequestMethod.POST, produces = "application/json")
 	public ResponseEntity sendQuestion(@RequestBody InquiryDTO inquiryDTO) {
-
-		System.out.println(inquiryDTO.content);
-		System.out.println(inquiryDTO.email);
-		System.out.println(inquiryDTO.title);
-		System.out.println(inquiryDTO.type);
-
+		HttpHeaders headers = null;
 		headers = new HttpHeaders();
 		headers.add("Content-Type", "application/json; charset=utf-8");
 		try {
@@ -39,7 +32,7 @@ public class InquiryController {
 			return new ResponseEntity(headers, HttpStatus.BAD_REQUEST);
 		}
 		// 성공시 200 코드 리턴
-		return new ResponseEntity("not fail", headers, HttpStatus.OK);
-	} // 질의응답. DTO 형태로 전달받는다.
+		return new ResponseEntity(headers, HttpStatus.OK);
+	}
 
 }
