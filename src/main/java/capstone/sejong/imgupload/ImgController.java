@@ -15,6 +15,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.junit.runner.Request;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
@@ -95,8 +96,8 @@ public class ImgController {
 		return new ResponseEntity(resultList, headers, HttpStatus.OK);
 	}
 
-	@RequestMapping(value = "imageUpload.do", method = RequestMethod.POST, produces = "application/multipart")
-	public void getImage(HttpServletRequest request) {
+	@RequestMapping(value = "imageUpload.do", method = RequestMethod.POST, produces = "application/json")
+	public HttpEntity getImage(HttpServletRequest request) throws Exception {
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest) request;
 		Iterator<String> iterator = multipartHttpServletRequest.getFileNames();
 		MultipartFile multipartFile = multipartHttpServletRequest.getFile(iterator.next());
@@ -112,8 +113,26 @@ public class ImgController {
 				System.out.println(e.getMessage());
 			}
 		}
-		System.out.println(fileSavePath + multipartFile.getOriginalFilename());
+		String originalFilename = multipartFile.getOriginalFilename();
+		String onlyFileName = originalFilename.substring(0, originalFilename.indexOf("."));
+		String extension = originalFilename.substring(originalFilename.indexOf("."));
+		String rename = onlyFileName + extension;
+		String fullPath = GlobalAttr.filePath + "\\" + rename;
+		// 이미지에서 추출된 글자 리스트
+		List<String> temp = FindOCR.process(fullPath);
 
+		// 제품의 리스트를 가져온다.
+		List<String> productList = service.getProductList();
+
+		// 이미지에서 해석된 결과 리스트
+		List<String> resultList = new ArrayList<>();
+
+		HttpHeaders headers = new HttpHeaders();
+		headers.setContentType(MediaType.valueOf("application/json;charset=UTF-8"));
+
+		for (int i = 0; i < temp.size(); i++) {
+			resultList.add(Main.main(temp.get(i), productList));
+		}
+		return new ResponseEntity(resultList, headers, HttpStatus.OK);
 	}
-
 }

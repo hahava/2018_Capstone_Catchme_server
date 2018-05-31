@@ -4,7 +4,7 @@
 
 
 	<select id="getProductList" resultType="string">
-		select productname from product
+		select productnamek from product
 	</select>
 
 </mapper>

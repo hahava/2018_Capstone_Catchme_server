@@ -23,6 +23,7 @@ public class FindOCR {
 		Tesseract instance = new Tesseract();
 		instance.setDatapath("C:\\utill\\tessdata");
 		instance.setLanguage("kor");
+		// instance.setLanguage("eng");
 
 		File file = new File(modifyFilePath);
 		String result = "";
@@ -35,13 +36,13 @@ public class FindOCR {
 				if (reArray[i].indexOf('|') != -1)
 					reArray[i] = reArray[i].replace('|', 'ㅣ');
 				if (reArray[i].indexOf('l') != -1)
-					//reArray[i] = reArray[i].replace('l', 'ㅣ');
-				if (reArray[i].indexOf('0') != -1)
-					reArray[i] = reArray[i].replace('0', 'ㅇ');
+					// reArray[i] = reArray[i].replace('l', 'ㅣ');
+					if (reArray[i].indexOf('0') != -1)
+						reArray[i] = reArray[i].replace('0', 'ㅇ');
 				if (reArray[i].indexOf('o') != -1)
-					//reArray[i] = reArray[i].replace('o', 'ㅇ');
-				if (reArray[i].indexOf('’') != -1)
-					reArray[i] = reArray[i].replace('’', ' ');
+					// reArray[i] = reArray[i].replace('o', 'ㅇ');
+					if (reArray[i].indexOf('’') != -1)
+						reArray[i] = reArray[i].replace('’', ' ');
 				if (reArray[i].isEmpty()) {
 					continue;
 				}
