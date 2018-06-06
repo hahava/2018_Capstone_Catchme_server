@@ -16,4 +16,14 @@ public class ImgDAO {
 		return sqlSession.selectList("getProductList");
 	}
 
+	public List<String> getIngradient() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("getIngradient");
+	}
+
+	public List<String> getIngradientKorean() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList("getIngradientkorean");
+	}
+
 }

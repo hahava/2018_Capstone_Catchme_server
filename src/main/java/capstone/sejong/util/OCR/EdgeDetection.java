@@ -19,9 +19,13 @@ public class EdgeDetection {
 
 	public String main() throws Exception {
 
-		// opencv 라이브러리 호출 (maven 전용)
-		nu.pattern.OpenCV.loadShared();
-		System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
+		try {
+			// opencv 라이브러리 호출 (maven 전용)
+			nu.pattern.OpenCV.loadShared();
+			System.loadLibrary(org.opencv.core.Core.NATIVE_LIBRARY_NAME);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 
 		// 파일을 opencv 전용으로 읽어 들인다.
 		Mat color = Imgcodecs.imread(getName);

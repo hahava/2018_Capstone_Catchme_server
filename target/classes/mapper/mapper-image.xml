@@ -4,7 +4,17 @@
 
 
 	<select id="getProductList" resultType="string">
-		select productnamek from product
+		SELECT productname FROM
+		product
+	</select>
+
+	<select id="getIngradient" resultType="string">
+		SELECT namek FROM cheminfo
+	</select>
+
+	
+	<select id="getIngradientkorean" resultType="string">
+		SELECT nameK FROM cheminfo
 	</select>
 
 </mapper>

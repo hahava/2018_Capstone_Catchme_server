@@ -10,7 +10,7 @@ import net.sourceforge.tess4j.Tesseract;
 
 public class FindOCR {
 
-	public static List<String> process(String fullPath) throws Exception {
+	public static List<String> process(String fullPath, String nation) throws Exception {
 
 		// OCR을 하기위해 이미지 전처리
 		EdgeDetection detection = new EdgeDetection(fullPath);
@@ -22,13 +22,15 @@ public class FindOCR {
 		// 구글 tesseract 설정 파일 path 설정
 		Tesseract instance = new Tesseract();
 		instance.setDatapath("C:\\utill\\tessdata");
-		instance.setLanguage("kor");
-		// instance.setLanguage("eng");
+		if (nation.equals("kor")) {
+			instance.setLanguage("kor");
+		}
 
 		File file = new File(modifyFilePath);
 		String result = "";
 		try {
 			result = instance.doOCR(file);
+			System.out.println(result + "이렇게된다.");
 			String[] reArray = result.split("\\,|\\.|\\′");
 
 			for (int i = 0; i < reArray.length; i++) {

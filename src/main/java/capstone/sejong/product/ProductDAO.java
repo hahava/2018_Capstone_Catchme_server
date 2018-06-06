@@ -15,7 +15,7 @@ public class ProductDAO {
 	@Autowired
 	SqlSession session;
 
-	public List<ChemicalDTO> getList(String[] gradient) {
+	public List<ChemicalDTO> getIngradientList(String[] gradient) {
 
 		List<ChemicalDTO> temp = new ArrayList<>();
 		for (String key : gradient) {
@@ -25,9 +25,8 @@ public class ProductDAO {
 		return temp;
 	}
 
-	public String[] getGradient(String productName) {
-		String word = session.selectOne("getgradient", productName);
-		String temp[] = word.split("_");
-		return temp;
+	public String getIngradient(String productname) {
+		return session.selectOne("productname", productname);
 	}
+
 }

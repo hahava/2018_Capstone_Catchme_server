@@ -35,6 +35,7 @@ public class ChemicalController {
 		for (int i = 0; i < list.size(); i++) {
 			result.put(String.valueOf(i), list.get(i));
 		}
+		System.out.println(list.get(0));
 		return new ResponseEntity(result, HttpStatus.OK);
 	}
 

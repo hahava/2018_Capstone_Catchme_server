@@ -13,12 +13,12 @@ public class ProductService {
 	@Autowired
 	ProductDAO productDao;
 
-	public List<ChemicalDTO> getList(String[] gradient) {
-		return productDao.getList(gradient);
+	public List<ChemicalDTO> getIngradientList(String[] gradient) {
+		return productDao.getIngradientList(gradient);
 	}
 
-	public String[] getGradient(String productName) {
-		return productDao.getGradient(productName);
+	public String getIngradient(String productname) {
+		return productDao.getIngradient(productname);
 	}
 
 }
