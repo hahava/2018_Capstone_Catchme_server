@@ -50,6 +50,6 @@
 	<context:component-scan
 		base-package="capstone.sejong.imgupload" />
 	<context:component-scan
-		base-package="capstone.sejong.util.OCR"></context:component-scan>
+		base-package="capstone.sejong.util.OCR" />
 
 </beans:beans>

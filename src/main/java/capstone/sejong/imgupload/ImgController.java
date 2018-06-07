@@ -133,8 +133,13 @@ public class ImgController {
 		for (int i = 0; i < temp.size(); i++) {
 			resultList.add(Main.main(temp.get(i), productList));
 		}
-		System.out.println(resultList.get(0));
-		return new ResponseEntity(resultList, headers, HttpStatus.OK);
+
+		// json타입으로 만들기 위한 hashmap
+		Map<String, String> result = new HashMap<>();
+		for (int i = 0; i < resultList.size(); i++) {
+			result.put(String.valueOf(i), resultList.get(i));
+		}
+		return new ResponseEntity(result, headers, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "getingradientimage", method = RequestMethod.POST, produces = "application/json")

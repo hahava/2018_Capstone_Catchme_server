@@ -1,22 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.mapper-product">
+<mapper namespace="mapper.product">
 
-	<select id="getlist" parameterType="String"
+	<select id="getlist" parameterType="string"
 		resultType="capstone.sejong.chemical.ChemicalDTO">
 
-		select * from cheminfo where nameK=#{key}
+		select * from cheminfo where nameK=#{'key'}
 
 	</select>
 
 
 
 
-	<select id="productname" parameterType="String">
+	<select id="productname" parameterType="string" resultType="string">
 
-		select productgradient
-		from product where productname =
-		#{productName}
+		select productingredient
+		from product where productname =#{'productname'}
 
 	</select>
 
