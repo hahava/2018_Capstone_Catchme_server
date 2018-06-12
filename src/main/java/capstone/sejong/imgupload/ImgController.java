@@ -176,12 +176,14 @@ public class ImgController {
 
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(MediaType.valueOf("application/json;charset=UTF-8"));
-
 		for (int i = 0; i < temp.size(); i++) {
 			resultList.add(Main.main(temp.get(i), productList));
 		}
-		System.out.println(resultList.get(0));
-		return new ResponseEntity(resultList, headers, HttpStatus.OK);
+		HashMap<String, String> map = new HashMap();
+		for (int i = 0; i < resultList.size(); i++) {
+			map.put(String.valueOf(i), resultList.get(i));
+		}
+		return new ResponseEntity(map, headers, HttpStatus.OK);
 	}
 
 	@RequestMapping(value = "getingradientimage/korean", method = RequestMethod.POST, produces = "application/json")

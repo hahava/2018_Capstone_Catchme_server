@@ -54,15 +54,20 @@ public class ChemicalController {
 
 	// 화학성분의 리스트를 리턴한다.
 	@RequestMapping(value = "/getinfolist", method = RequestMethod.GET)
-	public ResponseEntity<List<ChemicalDTO>> getInfoList(@RequestParam List<String> list) {
+	public ResponseEntity getInfoList(@RequestParam List<String> list) {
 		List<ChemicalDTO> chemiList = null;
+		HashMap<String, ChemicalDTO> map = new HashMap();
+
 		try {
 			chemiList = chemicalService.getInfoList(list);
+			for (int i = 0; i < chemiList.size(); i++) {
+				map.put(String.valueOf(i), chemiList.get(i));
+			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
 			return new ResponseEntity(null, HttpStatus.BAD_REQUEST);
 		}
-		return new ResponseEntity<List<ChemicalDTO>>(chemiList, HttpStatus.OK);
+		return new ResponseEntity(map, HttpStatus.OK);
 	}
 
 }
