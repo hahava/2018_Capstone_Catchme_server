@@ -1,34 +1,31 @@
 package capstone.sejong.chemical;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class ChemicalDAO {
 
 	@Autowired
-	SqlSession session;
+	private SqlSession session;
 
-	public List<String> getnamelist() throws Exception {
-		return session.selectList("getList");
+	public List<String> getChemicalIngredientNames() {
+		return session.selectList("selectChemicalIngredientNames");
 	}
 
-	public ChemicalDTO getInfo(String gradient) throws Exception {
-		ChemicalDTO chemicalDTO = session.selectOne("getinfo", gradient);
-		return chemicalDTO;
+	public ChemicalDTO getChemical(String gradient) {
+		return session.selectOne("selectChemicalIngredient", gradient);
 	}
 
-	public List<ChemicalDTO> getInfoList(List<String> list) throws Exception {
-		List<ChemicalDTO> temp = new ArrayList<>();
-		for (String gradient : list) {
-			ChemicalDTO chemicalDTO = session.selectOne("getinfo", gradient);
-			temp.add(chemicalDTO);
-		}
-		return temp;
+	public List<ChemicalDTO> selectChemicals(List<String> ingredientsNames) {
+		return ingredientsNames
+			.stream()
+			.<ChemicalDTO>map(ingredient -> session.selectOne("selectChemicalIngredient", ingredient))
+			.collect(Collectors.toList());
 	}
 
 }
