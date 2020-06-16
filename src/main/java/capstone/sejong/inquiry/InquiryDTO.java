@@ -1,43 +1,27 @@
 package capstone.sejong.inquiry;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+@Getter
+@Setter
+@ToString
 public class InquiryDTO {
+	@NotNull(message = "Email must be included")
+	private String email;
 
+	@NotNull(message = "Title must be included")
+	@Size(max = 100, message = "Title must be under 100 chars")
+	private String title;
 
-	String email;
-	String title;
-	String content;
-	String type;
+	@NotNull
+	@Size(max = 500, message = "Content must be under 100 chars")
+	private String content;
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
-
+	@NotNull(message = "Type must be included")
+	private String type;
 }
