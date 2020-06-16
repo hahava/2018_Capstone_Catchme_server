@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 public class InquiryDAO {
 
 	@Autowired
-	SqlSession session;
+	private SqlSession session;
 
-	public void insert(InquiryDTO inquiryDTO) throws Exception {
-		session.insert("insert", inquiryDTO);
+	public int addInquiry(InquiryDTO inquiryDTO) {
+		return session.insert("insertInquiry", inquiryDTO);
 	}
 
 }

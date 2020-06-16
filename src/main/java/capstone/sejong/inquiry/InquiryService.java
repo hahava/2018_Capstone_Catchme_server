@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 public class InquiryService {
 
 	@Autowired
-	InquiryDAO question;
+	private InquiryDAO question;
 
-	public void sendRequest(InquiryDTO questionDTO) throws Exception {
-		question.insert(questionDTO);
+	public int addInquiry(InquiryDTO questionDTO) {
+		return question.addInquiry(questionDTO);
 	}
 
 }
