@@ -1,21 +1,11 @@
 package capstone.sejong.product;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Setter
+@Getter
 public class ProductDTO {
-
-	String productName;
-	String productGradient;
-	
-	public String getProductName() {
-		return productName;
-	}
-	public void setProductName(String productName) {
-		this.productName = productName;
-	}
-	public String getProductGradient() {
-		return productGradient;
-	}
-	public void setProductGradient(String productGradient) {
-		this.productGradient = productGradient;
-	}
-
+    private String productName;
+    private String productGradient;
 }

@@ -1,24 +1,23 @@
 package capstone.sejong.product;
 
-import java.util.List;
-
+import capstone.sejong.chemical.ChemicalDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import capstone.sejong.chemical.ChemicalDTO;
+import java.util.List;
 
 @Service
 public class ProductService {
 
-	@Autowired
-	ProductDAO productDao;
+    @Autowired
+    private ProductDAO productDao;
 
-	public List<ChemicalDTO> getIngradientList(String[] gradient) {
-		return productDao.getIngradientList(gradient);
-	}
+    public List<ChemicalDTO> getChemicals(List<String> gradients) {
+        return productDao.selectChemicals(gradients);
+    }
 
-	public String getIngradient(String productname) {
-		return productDao.getIngradient(productname);
-	}
+    public String getIngredientNames(String productName) {
+        return productDao.selectIngredientNames(productName);
+    }
 
 }

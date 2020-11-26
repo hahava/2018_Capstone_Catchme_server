@@ -1,32 +1,30 @@
 package capstone.sejong.product;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import capstone.sejong.chemical.ChemicalDTO;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import capstone.sejong.chemical.ChemicalDTO;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class ProductDAO {
 
-	@Autowired
-	SqlSession session;
+    @Autowired
+    private SqlSession session;
 
-	public List<ChemicalDTO> getIngradientList(String[] gradient) {
+    public List<ChemicalDTO> selectChemicals(List<String> gradients) {
+        List<ChemicalDTO> chemicals = new ArrayList<>();
+        for (String key : gradients) {
+            ChemicalDTO chemicalDTO = session.selectOne("selectChemicalInfo", key);
+            chemicals.add(chemicalDTO);
+        }
+        return chemicals;
+    }
 
-		List<ChemicalDTO> temp = new ArrayList<>();
-		for (String key : gradient) {
-			ChemicalDTO chemicalDTO = session.selectOne("getlist", key);
-			temp.add(chemicalDTO);
-		}
-		return temp;
-	}
-
-	public String getIngradient(String productname) {
-		return session.selectOne("productname", productname);
-	}
+    public String selectIngredientNames(String productName) {
+        return session.selectOne("selectIngredientNames", productName);
+    }
 
 }
