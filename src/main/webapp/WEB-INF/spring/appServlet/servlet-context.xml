@@ -23,9 +23,13 @@
         </beans:constructor-arg>
     </beans:bean>
 
+    <beans:bean id="tesseract" class="net.sourceforge.tess4j.Tesseract"></beans:bean>
+
+    <beans:bean id="jaroWinkler" class="com.wcohen.ss.JaroWinkler"></beans:bean>
+
     <context:component-scan base-package="capstone.sejong.inquiry"/>
     <context:component-scan base-package="capstone.sejong.chemical"/>
     <context:component-scan base-package="capstone.sejong.product"/>
-    <context:component-scan base-package="capstone.sejong.imgupload"/>
-    <context:component-scan base-package="capstone.sejong.util.OCR"/>
+    <context:component-scan base-package="capstone.sejong.imageprocess"/>
+    <context:component-scan base-package="capstone.sejong.ocr"/>
 </beans:beans>

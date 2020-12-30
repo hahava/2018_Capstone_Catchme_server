@@ -20,4 +20,17 @@
 			productname = #{'productName'}
 	</select>
 
+	<select id="selectAllProducts" resultType="string">
+		SELECT
+			productname
+		FROM
+			product
+	</select>
+
+	<select id="selectIngredient" resultType="string">
+		SELECT
+			namek
+		FROM
+			cheminfo
+	</select>
 </mapper>

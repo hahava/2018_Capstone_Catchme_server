@@ -27,4 +27,11 @@ public class ProductDAO {
         return session.selectOne("selectIngredientNames", productName);
     }
 
+    public List<String> selectAllProducts() {
+        return session.selectList("selectAllProducts");
+    }
+
+    public List<String> selectIngredient() {
+        return session.selectList("selectIngredient");
+    }
 }

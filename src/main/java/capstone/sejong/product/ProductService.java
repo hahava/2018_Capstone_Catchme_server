@@ -16,6 +16,10 @@ public class ProductService {
         return productDao.selectChemicals(gradients);
     }
 
+    public List<String> getAllProducts(){
+        return productDao.selectAllProducts();
+    }
+
     public String getIngredientNames(String productName) {
         return productDao.selectIngredientNames(productName);
     }
